@@ -1,0 +1,9 @@
+[project]
+name = "i18nxt-parse"
+version = "0.1.0"
+description = "A i18next JSON v4 parser for moz-l10n."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "moz-l10n>=0.11.2",
+]
