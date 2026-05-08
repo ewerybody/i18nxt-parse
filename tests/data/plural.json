@@ -1,0 +1,8 @@
+{
+    "plural_zero": "No ducks!",
+    "plural_one": "One duck!",
+    "plural_two": "Two ducks!",
+    "plural_few": "A couple ducks!",
+    "plural_many": "Loads of ducks!",
+    "plural_other": "{{count}} ducks!"
+}
