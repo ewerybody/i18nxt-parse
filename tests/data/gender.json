@@ -1,8 +1,8 @@
 {
     "message_female": "She reads the JSON code.",
     "message_male": "He reads the JSON code.",
-    "mails_one_female": "Alice received an e-mail",
-    "mails_one_male": "Bob received an e-mail",
-    "mails_other_female": "Alice received {{count}} e-mails",
-    "mails_other_male": "Bob received {{count}} e-mails"
+    "mails_female_one": "Alice received an e-mail",
+    "mails_male_one": "Bob received an e-mail",
+    "mails_female_other": "Alice received {{count}} e-mails",
+    "mails_male_other": "Bob received {{count}} e-mails"
 }
