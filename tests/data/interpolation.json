@@ -1,5 +1,6 @@
 {
     "interpolation1": "{{greeting}}, {{value}}!",
     "interpolation2": "My {{value}} is full of eels!",
-    "interpolation3": "My postillion has been struck by {{value}}"
+    "interpolation3": "My postillion has been struck by {{value}}",
+    "interpolation4": "{{x}}{{y}}{{z}}"
 }
