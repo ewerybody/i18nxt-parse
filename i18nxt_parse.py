@@ -19,7 +19,8 @@ from moz.l10n.model import (
 
 OTHER = 'other'
 PLURALS = 'zero', 'one', 'two', 'few', 'many', OTHER
-RE_INTERPOLATION = re.compile(r'\{\{(\w+)\}\}')
+RE_INTERPOLATION = re.compile(r'\{\{(-\s*)?(\w+)\}\}')
+"""Regex pattern for splitting into text, dash, varname."""
 
 # plural interpolation has to happen with {{count}}! See:
 # https://www.i18next.com/translation-function/plurals
@@ -117,11 +118,18 @@ def _get_pattern_list(value: str) -> list[str | Expression | Markup]:
         return [value]
 
     pattern: list[str | Expression | Markup] = []
-    for i, part in enumerate(RE_INTERPOLATION.split(value)):
-        if not part:
-            continue
-        # regex split puts our {{variables}} in the even spots all other in odds
-        pattern.append(Expression(VariableRef(part)) if i % 2 else part)
+    parts = RE_INTERPOLATION.split(value)
+    for text, dash, var_name in zip(parts[::3], parts[1::3], parts[2::3]):
+        if text:
+            pattern.append(text)
+        if dash:
+            pattern.append(Expression(VariableRef(var_name), attributes={'unescaped': True}))
+        else:
+            pattern.append(Expression(VariableRef(var_name)))
+    # check for trailing text that the zip might have omitted:
+    if len(parts) % 3 and parts[-1]:
+        pattern.append(parts[-1])
+
     return pattern
 
 

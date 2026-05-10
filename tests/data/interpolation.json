@@ -1,6 +1,8 @@
 {
-    "interpolation1": "{{greeting}}, {{value}}!",
-    "interpolation2": "My {{value}} is full of eels!",
-    "interpolation3": "My postillion has been struck by {{value}}",
-    "interpolation4": "{{x}}{{y}}{{z}}"
+    "startWithVar": "{{greeting}}, {{value}}!",
+    "varInMiddle": "My {{value}} is full of eels!",
+    "endingWithVar": "My postillion has been struck by {{value}}",
+    "onlyVars": "{{x}}{{y}}{{z}}",
+    "unescaped": "L33t HTML C0D3 8Y {{hacker}}: {{- code}}",
+    "emptyVars": "What's up with {{}}, {{ }} or {{-}} or {{ -}}, {{- }}??"
 }

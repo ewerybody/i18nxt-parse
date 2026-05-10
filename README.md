@@ -38,10 +38,10 @@ It's not the aim of this demo project to represent all i18next features with the
 * [x] key ordering preserved from source
 * [x] basic key-value pairs
 * [x] string interpolation with `{{someValue}}` pattern
+  * [x] unescaped interpolation `{{- value}}`
 * [x] the 6 plural forms `zero, one, two, few, many, other` with optional [interpolation via `{{count}}` variable](https://www.i18next.com/translation-function/plurals).
     * [x] plural forms parsing in any order
     * [x] implicit singular from "bare" `key` treated as `one` when `key_other` exists ([see](https://www.i18next.com/translation-function/nesting#passing-options-to-nestings#passing-options-to-nestings))
-* [x] extraction of contexts*
 * [x] validation for yet unsupported features (arrays, objects, `$t` nesting, contexts)
 
 What's NOT yet available is:
@@ -50,8 +50,9 @@ What's NOT yet available is:
 * [ ] [nesting](https://www.i18next.com/translation-function/nesting) with `$t` references
 * [ ] [ordinal plurals](https://www.i18next.com/translation-function/plurals#ordinal-plurals)
 * [ ] [interval plurals](https://www.i18next.com/translation-function/plurals#interval-plurals)
-* [ ] unescaped interpolation `{{- value}}`
-* [ ] *[selection by context](https://www.i18next.com/translation-function/context) (it's gathered internally but not yet presented with moz-l10n `SelectMessage`)
+* [x] extraction of contexts
+  * [ ] *[selection by context](https://www.i18next.com/translation-function/context) (it's gathered internally but not yet presented with moz-l10n `SelectMessage`)
   * [ ] gender context (`key_female`/`key_male`)
   * [ ] context+plural combination (`key_female_one`, `key_male_other` ...) (though the proper order is taken care of)
-* [ ] [support for additional interpolation options](https://www.i18next.com/translation-function/interpolation#additional-options)
+* [ ] [support for additional interpolation options](https://www.i18next.com/translation-function/interpolation#additional-options) like configurable interpolation delimiters other than `{{}}`
+* [ ] and finally: No **Serialization** yet!

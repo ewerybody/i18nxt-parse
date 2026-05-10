@@ -43,23 +43,23 @@ def test_interpolation():
     """Test basic string interpolation."""
     expect_entries: list = [
         Entry(
-            id=('interpolation1',),
+            id=('startWithVar',),
             value=PatternMessage(
                 [Expression(VariableRef('greeting')), ', ', Expression(VariableRef('value')), '!']
             ),
         ),
         Entry(
-            id=('interpolation2',),
+            id=('varInMiddle',),
             value=PatternMessage(['My ', Expression(VariableRef('value')), ' is full of eels!']),
         ),
         Entry(
-            id=('interpolation3',),
+            id=('endingWithVar',),
             value=PatternMessage(
                 ['My postillion has been struck by ', Expression(VariableRef('value'))]
             ),
         ),
         Entry(
-            id=('interpolation4',),
+            id=('onlyVars',),
             value=PatternMessage(
                 [
                     Expression(VariableRef('x')),
@@ -67,6 +67,21 @@ def test_interpolation():
                     Expression(VariableRef('z')),
                 ]
             ),
+        ),
+        Entry(
+            id=('unescaped',),
+            value=PatternMessage(
+                [
+                    'L33t HTML C0D3 8Y ',
+                    Expression(VariableRef('hacker')),
+                    ': ',
+                    Expression(VariableRef('code'), attributes={'unescaped': True}),
+                ]
+            ),
+        ),
+        Entry(
+            id=('emptyVars',),
+            value=PatternMessage(["What's up with {{}}, {{ }} or {{-}} or {{ -}}, {{- }}??"]),
         ),
     ]
     expect = Resource(format=Format.plain_json, sections=[Section(id=(), entries=expect_entries)])
