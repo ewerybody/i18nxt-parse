@@ -39,9 +39,10 @@ It's not the aim of this demo project to represent all i18next features with the
 * [x] basic key-value pairs
 * [x] string interpolation with `{{someValue}}` pattern
   * [x] unescaped interpolation `{{- value}}`
+  * [x] malformed tags `{{}}`, `{{- }}` preserved as literal strings
 * [x] the 6 plural forms `zero, one, two, few, many, other` with optional [interpolation via `{{count}}` variable](https://www.i18next.com/translation-function/plurals).
     * [x] plural forms parsing in any order
-    * [x] implicit singular from "bare" `key` treated as `one` when `key_other` exists ([see](https://www.i18next.com/translation-function/nesting#passing-options-to-nestings#passing-options-to-nestings))
+    * [x] implicit singular from "bare" `key` treated as `one` when `key_other` exists ([see](https://www.i18next.com/translation-function/nesting#passing-options-to-nestings))
 * [x] validation for yet unsupported features (arrays, objects, `$t` nesting, contexts)
 
 What's NOT yet available is:
