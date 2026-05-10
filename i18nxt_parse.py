@@ -94,7 +94,7 @@ def i18next_parse(source: str | bytes | Path) -> Resource:
             # https://www.i18next.com/translation-function/nesting#passing-options-to-nestings
             if '' in plurals:
                 if 'one' in plurals:
-                    raise NotImplementedError('Bare key cannot be "one" if that already exists!')
+                    raise ValueError('Bare key cannot be "one" if that already exists!')
                 plurals['one'] = plurals['']
                 del plurals['']
 

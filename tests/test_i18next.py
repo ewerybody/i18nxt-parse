@@ -130,5 +130,36 @@ def test_plural_order_invariant():
         assert i18next_parse(shuffled) == expected
 
 
+def test_not_implemented():
+    with pytest.raises(NotImplementedError):
+        i18next_parse('{"notImplementedArray": ["not", "yet", "implemented"]}')
+
+    with pytest.raises(NotImplementedError):
+        i18next_parse('{"notImplementedObject": {"subKey": "subValue"}}')
+
+    with pytest.raises(NotImplementedError):
+        i18next_parse('{"key_context": "some value"}')
+
+    with pytest.raises(NotImplementedError):
+        i18next_parse('{"whichNumber_ordinal_one": "{{count}}st implement this!"}')
+
+    with pytest.raises(NotImplementedError):
+        i18next_parse('{"numItems_interval": "(1)[one item];(2-7)[a few items];"}')
+
+
+def test_proper_errors():
+    # should be strings only!
+    with pytest.raises(TypeError):
+        i18next_parse('{"keyWithNumber": 1337.42}')
+
+    # should be either no underscore `key`, `key_context`/`key_plural` or `key_context_plural`
+    with pytest.raises(ValueError):
+        i18next_parse('{"key_with_many_underscores": "muppets"}')
+
+    # implicit "one"
+    with pytest.raises(ValueError):
+        i18next_parse('{"alice": "Just {{count}} Bob!","alice_one": "Just another Bob!"}')
+
+
 if __name__ == '__main__':
     pytest.main([__file__, '-vv'])
