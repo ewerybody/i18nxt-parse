@@ -74,6 +74,12 @@ def i18next_parse(source: str | bytes | Path) -> Resource:
     entries: list[Entry[Message] | Comment] = []
     for key, contexts in keys.items():
         for context, plurals in contexts.items():
+            if context == 'ordinal':
+                # TODO: https://www.i18next.com/translation-function/plurals#ordinal-plurals
+                raise NotImplementedError('Support for Ordinal plurals is not yet implemented!')
+            if context == 'interval':
+                # TODO: https://www.i18next.com/translation-function/plurals#interval-plurals
+                raise NotImplementedError('Support for Interval plurals is not yet implemented!')
             if context != '':
                 raise NotImplementedError('No support yet for other than default contexts ("")!')
 
