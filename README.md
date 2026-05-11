@@ -57,3 +57,12 @@ What's NOT yet available is:
   * [ ] context+plural combination (`key_female_one`, `key_male_other` ...) (though the proper order is taken care of)
 * [ ] [support for additional interpolation options](https://www.i18next.com/translation-function/interpolation#additional-options) like configurable interpolation delimiters other than `{{}}`
 * [ ] and finally: No **Serialization** yet!
+
+
+## Limitations
+
+This is a demo project with no intentions to be 100% correct, super performant or complete in feature or test coverage.
+
+Critique, reports & ideas are very welcome! 🙇
+
+See the `LICENSE` for more.
