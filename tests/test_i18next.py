@@ -192,7 +192,7 @@ def test_serializing_to_mozl10n_formats():
                 continue
 
             assert isinstance(result, str)
-            report[fmt.name].append(f'DONE {res_name}')
+            report[fmt.name].append(f'DONE: {res_name}')
 
     if all(isinstance(results, str) for results in report.values()):
         pytest.fail('None of the serializer modules could be imported!')
