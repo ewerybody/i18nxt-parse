@@ -29,8 +29,8 @@ resource: Resource = i18next_parse('/path/to/translation.json')
 
 ## About this
 
-So far **moz-l10n** implements parsers & serializers for these formats: `android, dtd, fluent, gettext, inc, ini, plain_json, properties, webext, xliff`. All have varying capabilities. That's no different for **i18next**.\
-While **moz-l10n** aims to cover a widest range of localization features there are even things that can not be translated from [i18next like arrays](https://www.i18next.com/translation-function/objects-and-arrays#arrays).
+So far **moz-l10n** [implements parsers & serializers for these formats](https://github.com/mozilla/moz-l10n/tree/main/python/moz/l10n/formats): `android, dtd, fluent, gettext, inc, ini, plain_json, properties, webext, xliff`. All have varying capabilities. That's no different for **i18next**.\
+While **moz-l10n** aims to cover a widest range of localization features there are things that can not be translated from [i18next like arrays](https://www.i18next.com/translation-function/objects-and-arrays#arrays).
 
 It's not the aim of this demo project to represent all i18next features with the moz-l10n data model though. A small set of features was chosen to be supported so far:
 
