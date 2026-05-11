@@ -7,7 +7,7 @@ Welcome! This is a little demo project to implement a parser from [the **i18next
 * get the **project files**
   * via git `git clone https://github.com/ewerybody/i18nxt-parse.git` or
   * download and extract [the zip file](https://github.com/ewerybody/i18nxt-parse/archive/refs/heads/main.zip) or
-  * on [the github-repository](https://github.com/ewerybody/i18nxt-parse) press the <kbd style="color: #fff; background: #29903B"><> Code ⮟</kbd> button and hit **🖳 Open with GitHub Desktop** if that's your style
+  * on [the github-repository](https://github.com/ewerybody/i18nxt-parse) press the <kbd style="color: #fff; background: #29903B"><> Code ⮟</kbd> button and hit **🖳 Open with GitHub Desktop**
 
 * Make sure you **have `uv` available**: [docs.astral.sh/uv/getting-started/installation](https://docs.astral.sh/uv/getting-started/installation/#installing-uv)
 
@@ -65,4 +65,4 @@ This is a demo project with no intentions to be 100% correct, super performant o
 
 Critique, reports & ideas are very welcome! 🙇
 
-See the `LICENSE` for more.
+See the [`LICENSE`](https://github.com/ewerybody/i18nxt-parse/blob/main/LICENSE) for more.
