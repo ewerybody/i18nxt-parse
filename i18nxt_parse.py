@@ -1,5 +1,5 @@
-import re
 import json
+import re
 from pathlib import Path
 
 from moz.l10n.model import (
@@ -135,6 +135,7 @@ def _get_pattern_list(value: str) -> list[str | Expression | Markup]:
 
 if __name__ == '__main__':
     import pytest
+
     import tests.test_i18next
 
     pytest.main([tests.test_i18next.__file__, '-v'])
