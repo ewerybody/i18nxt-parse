@@ -2,6 +2,10 @@
 
 Welcome! This is a little demo project to implement a parser from [the **i18next JSON V4** format](https://www.i18next.com/misc/json-format#i18next-json-v4) to [the **moz-l10n** Python library](https://github.com/mozilla/moz-l10n/tree/main/python#mozl10n).
 
+## the **i18next** format
+
+**WIP** - I'd propose to put a section here to line out each of the formats capabilities and how to represent it within the moz-l10n data model
+
 ## How to prepare
 
 * get the **project files**
