@@ -21,7 +21,7 @@ from moz.l10n.model import (
 ROOT_DIR = Path(__file__).parent.parent
 if str(ROOT_DIR) not in sys.path:
     sys.path.append(str(ROOT_DIR))
-from i18nxt_parse import COUNT, COUNT_DECLARATION, i18next_parse  # noqa: E402
+from i18nxt_parse import COUNT, COUNT_DECLARATION, i18next_parse, DEFAULT_SECTION_NAME  # noqa: E402
 
 DATA_DIR = Path(__file__).parent / 'data'
 
@@ -36,7 +36,8 @@ def test_simple():
     ]
     expect = Resource(format=Format.plain_json, sections=[Section(id=(), entries=expect_entries)])
 
-    for source in _iter_source_variants(DATA_DIR / 'simple.json'):
+    for source, section_name in _iter_source_variants(DATA_DIR / 'simple.json'):
+        expect.sections[0].id = (section_name,)
         assert expect == i18next_parse(source)
 
 
@@ -87,7 +88,8 @@ def test_interpolation():
     ]
     expect = Resource(format=Format.plain_json, sections=[Section(id=(), entries=expect_entries)])
 
-    for source in _iter_source_variants(DATA_DIR / 'interpolation.json'):
+    for source, section_name in _iter_source_variants(DATA_DIR / 'interpolation.json'):
+        expect.sections[0].id = (section_name,)
         assert expect == i18next_parse(source)
 
 
@@ -111,7 +113,8 @@ def test_plurals():
     ]
     expect = Resource(format=Format.plain_json, sections=[Section(id=(), entries=expect_entries)])
 
-    for source in _iter_source_variants(DATA_DIR / 'plurals.json'):
+    for source, section_name in _iter_source_variants(DATA_DIR / 'plurals.json'):
+        expect.sections[0].id = (section_name,)
         assert expect == i18next_parse(source)
 
 
@@ -122,6 +125,7 @@ def test_plural_order_invariant():
     items = list(data.items())
 
     expected = i18next_parse(data_path)
+    expected.sections[0].id = (DEFAULT_SECTION_NAME,)
 
     for _ in range(5):
         random.shuffle(items)
@@ -183,6 +187,11 @@ def test_serializing_to_mozl10n_formats():
 
         report[fmt.name] = []
         for res_name, resource in resources.items():
+            if fmt.name == 'inc':
+                resource.sections[0].id = ()
+            else:
+                resource.sections[0].id = (res_name,)
+
             try:
                 result = '\n'.join(serializer(resource))
             except Exception as error:
@@ -206,15 +215,15 @@ def test_serializing_to_mozl10n_formats():
         pytest.fail('ALL serializers reported errors!')
 
 
-def _iter_source_variants(data_path: Path) -> typing.Iterator[str | bytes | Path]:
+def _iter_source_variants(data_path: Path) -> typing.Iterator[tuple[str | bytes | Path, str]]:
     """From given `Path` object iterate over `source` variants to yield to the parser."""
-    yield data_path
+    yield data_path, data_path.stem
 
-    yield str(data_path)
+    yield str(data_path), data_path.stem
 
-    yield data_path.read_text()
+    yield data_path.read_text(), DEFAULT_SECTION_NAME
 
-    yield data_path.read_bytes()
+    yield data_path.read_bytes(), DEFAULT_SECTION_NAME
 
 
 if __name__ == '__main__':

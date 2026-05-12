@@ -26,19 +26,23 @@ RE_INTERPOLATION = re.compile(r'\{\{(-\s*)?(\w+)\}\}')
 # https://www.i18next.com/translation-function/plurals
 COUNT = 'count'
 COUNT_DECLARATION = {COUNT: Expression(VariableRef(COUNT), 'number')}
+DEFAULT_SECTION_NAME = 'i18next-section'
 
 
 def i18next_parse(source: str | bytes | Path) -> Resource:
     """
     Parse i18next V4 data from string, bytes or given path into message resource.
     """
+    section_name: str = DEFAULT_SECTION_NAME
     if isinstance(source, bytes):
         source = str(source, 'utf8')
     elif isinstance(source, Path):
+        section_name = source.stem
         source = source.read_text()
     else:
         source_path = Path(source)
         if source_path.is_file():
+            section_name = source_path.stem
             source = source_path.read_text()
 
     # first pass, gather keys split by _ into key, context, plural. No _ no context ('')!
@@ -110,7 +114,7 @@ def i18next_parse(source: str | bytes | Path) -> Resource:
             )
             entries.append(Entry(id=(key,), value=msg))
 
-    return Resource(Format.plain_json, [Section((), entries)])
+    return Resource(Format.plain_json, [Section((section_name,), entries)])
 
 
 def _get_pattern_list(value: str) -> list[str | Expression | Markup]:
