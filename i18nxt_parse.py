@@ -26,6 +26,7 @@ RE_INTERPOLATION = re.compile(r'\{\{(-\s*)?(\w+)\}\}')
 # https://www.i18next.com/translation-function/plurals
 COUNT = 'count'
 COUNT_DECLARATION = {COUNT: Expression(VariableRef(COUNT), 'number')}
+"""FIXME!"""
 DEFAULT_SECTION_NAME = 'i18next-section'
 
 
