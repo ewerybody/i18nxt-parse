@@ -21,7 +21,7 @@ from moz.l10n.model import (
 ROOT_DIR = Path(__file__).parent.parent
 if str(ROOT_DIR) not in sys.path:
     sys.path.append(str(ROOT_DIR))
-from i18nxt_parse import COUNT, COUNT_DECLARATION, i18next_parse, DEFAULT_SECTION_NAME  # noqa: E402
+from i18nxt_parse import COUNT, i18next_parse, DEFAULT_SECTION_NAME  # noqa: E402
 
 DATA_DIR = Path(__file__).parent / 'data'
 
@@ -107,7 +107,9 @@ def test_plurals():
         Entry(
             id=('plural',),
             value=SelectMessage(
-                declarations=COUNT_DECLARATION, selectors=(VariableRef(COUNT),), variants=variants
+                declarations={COUNT: Expression(VariableRef(COUNT), 'number')},
+                selectors=(VariableRef(COUNT),),
+                variants=variants,
             ),
         )
     ]

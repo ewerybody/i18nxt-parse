@@ -25,8 +25,6 @@ RE_INTERPOLATION = re.compile(r'\{\{(-\s*)?(\w+)\}\}')
 # plural interpolation has to happen with {{count}}! See:
 # https://www.i18next.com/translation-function/plurals
 COUNT = 'count'
-COUNT_DECLARATION = {COUNT: Expression(VariableRef(COUNT), 'number')}
-"""FIXME!"""
 DEFAULT_SECTION_NAME = 'i18next-section'
 
 
@@ -109,7 +107,7 @@ def i18next_parse(source: str | bytes | Path) -> Resource:
                 if p in plurals
             }
             msg = SelectMessage(
-                declarations=COUNT_DECLARATION,
+                declarations={COUNT: Expression(VariableRef(COUNT), 'number')},
                 selectors=(VariableRef(COUNT),),
                 variants=variants,
             )
