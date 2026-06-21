@@ -1,0 +1,14 @@
+{
+    "python.envFile": "${workspaceFolder}/.vscode/.env",
+    "workbench.colorCustomizations": {
+        "tab.activeBackground": "#5FCE4C",
+        "tab.activeForeground": "#22491b",
+        "gitDecoration.untrackedResourceForeground": "#fff",
+        "tab.inactiveBackground": "#0b0f1a",
+        "tab.inactiveForeground": "#9ca6b9",
+        "tab.hoverBackground": "#003060",
+        "statusBar.debuggingBackground": "#5FCE4C",
+        "statusBar.background": "#387c2c",
+        "titleBar.activeBackground": "#387c2c",
+    },
+}
